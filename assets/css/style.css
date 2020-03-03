@@ -6,11 +6,11 @@ body {
 }
 
 .title{
-    font-size: 50px;
+    font-size: 400%;
 }
 
 .btnCSS{
-    margin: 1%; /* button spacing */
+    margin: 1%; /* Button spacing */
 }
 
 #newTopic {
@@ -18,25 +18,13 @@ body {
 }
 
 img {
-    margin: 15px;
-    width: 100%;
-    max-width: 325px;
+    margin: 5%;
+    max-width: 100%; /* Make images fit nicely in column */
 }
-
-.results div {
-    float: left;
-    width: 100%;
-}
-
-.results div::after{
-    content: "";
-    display: table;
-    clear: both;
-  }
 
 #appendMode {
-    margin-top: 15px;
-    background-color: red;
+    margin-top: 3%;
+    background-color: red;  /* Default to append off */
 }
 
 .maincontent {
@@ -45,13 +33,13 @@ img {
 
 .favButton,
 .rmFavButton {
-    margin-bottom: 20px;
+    margin-bottom: 8%; /* Space between add to favorite button and row below */
 }
 
 .favorite {
-    font-size: 25px;
+    font-size: 200%; /* Sizing favorite title bigger */
 }
 
-.results div {
-    min-height: 360px;
+.favorite div {
+    font-size: 50%; /* Lower back down b/c of inheritance setting it to 2x 8 */
 }
