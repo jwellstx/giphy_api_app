@@ -1,0 +1,50 @@
+body { 
+    background-color: black;
+    color: white;
+    text-align: center;  
+    font-family: 'Source Code Pro', Arial, Helvetica, sans-serif;
+}
+
+.title{
+    font-size: 50px;
+}
+
+.btnCSS{
+    margin: 1%; /* button spacing */
+}
+
+#newTopic {
+    margin-top: 10%;
+}
+
+img {
+    margin: 15px;
+    max-width: 325px;
+}
+
+.results div {
+    float: left;
+    width: 33.33%;
+}
+
+#appendMode {
+    margin-top: 15px;
+    background-color: red;
+}
+
+.maincontent {
+    margin-top: 4%;
+}
+
+.favButton,
+.rmFavButton {
+    margin-bottom: 20px;
+}
+
+.favorite {
+    font-size: 25px;
+}
+
+.results div {
+    min-height: 360px;
+}
