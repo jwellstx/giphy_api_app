@@ -73,17 +73,13 @@ var App = {
             if (!App.appendMode) {
                 results.empty();
             }
-            // var newField;
-            // var newDiv;
-            // var newRow = $("<div class='row'>");;
+            var newRow = $("<div class='row'>");;
             for (var i = 0; i < response.data.length; i++) {
                 
-                // newDiv = $("<div class='col'>");
+                newDiv = $("<div class='col-md-3' style='float: left'>");
 
-                newDiv = $("<div>");
                 newDiv.append("<strong>Title:</strong> " + response.data[i].title + "<br>");
                 newDiv.append("<strong>Rating:</strong> " + response.data[i].rating + "<br>");
-                newDiv.append("<strong>Category:</strong> " + obj.text() + "<br>");
                 var newGif = $('<img>');
                 newGif.addClass("myImage");
                 newGif.attr("src", response.data[i].images.fixed_height_still.url);
@@ -95,16 +91,12 @@ var App = {
                 newFav.addClass("favButton btn btn-dark");
                 newFav.text("Add to favorites!");
                 newDiv.append(newFav);
-                results.append(newDiv);
-                
-                // if (i > 0 && (i + 3) % 3 === 0 ) {
-                //     results.append(newRow);
-                //     newRow = $("<div class='row'>");
-                // }
-                // else {
-                //     newRow.append(newDiv);
-                // }
-                
+
+                newRow.append(newDiv);
+                if ((i-2) % 3 === 0 ) {
+                    results.append(newRow);
+                    newRow = $("<div class='row'>");
+                }
             }
         });
     },

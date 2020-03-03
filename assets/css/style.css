@@ -19,13 +19,20 @@ body {
 
 img {
     margin: 15px;
+    width: 100%;
     max-width: 325px;
 }
 
 .results div {
     float: left;
-    width: 33.33%;
+    width: 100%;
 }
+
+.results div::after{
+    content: "";
+    display: table;
+    clear: both;
+  }
 
 #appendMode {
     margin-top: 15px;
