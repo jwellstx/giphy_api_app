@@ -1,6 +1,7 @@
 var App = {
-    topics: ["cheese", "snl", "motorcycles", "dogs", "funny", "confused", "explosion", "shaq", "football", "uno", "random"],
+    topics: ["funny", "happy", "confused", "upset", "humiliating", "angry", "excited", "joy", "revenge", "bored", "grumpy", "painful", "sarcastic", "goofy", "relieved", "disapprove", "anxious", "guilty", "innocent"],
     appendMode: false,
+    favIds: [],
     startApp: function () {
         // Create initial buttons
         this.createButtons();
@@ -46,6 +47,10 @@ var App = {
         });
         // When remove from favorite is pressed, just delete element
         $(document).on("click", ".rmFavButton", function () {
+            // remove id from favIds so IF we want to add it again to favorites we can -- this is only needed if we add to favorites, remove it then add it again
+            var id = $(this).parent().attr("data-id");
+            var index = App.favIds.indexOf(id);
+            if (index !== -1) App.favIds.splice(index, 1);
             $(this).parent().remove();
         });
         // When clear is pressed, empty out the main content section but keep favorites
@@ -100,6 +105,7 @@ var App = {
                 newGif.attr("data-state", "still");
                 newGif.attr("data-still", response.data[i].images.fixed_height_still.url);
                 newGif.attr("data-animate", response.data[i].images.fixed_height.url);
+                newDiv.attr("data-id", response.data[i].id);
                 newDiv.append(newGif);
                 var newFav = $('<br><button>');
                 newFav.addClass("favButton btn btn-dark");
@@ -131,6 +137,15 @@ var App = {
         }
     },
     addToFavorite: function (obj) {
+        // Check if we've already added to favorites so we dont have duplicate entries
+        var id = obj.attr("data-id");
+        if (App.favIds.includes(id)){
+            return;
+        }
+        else {
+            App.favIds.push(id);
+        }
+
         var newObj = obj.clone();
         var childImg = newObj.children("img");
         // If clicked image is animated, set the favorites to still image
