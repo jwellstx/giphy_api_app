@@ -5,6 +5,10 @@ var App = {
     startApp: function () {
         // Create initial buttons
         this.createButtons();
+        if(localStorage.getItem("IDS")) {
+            App.favIds = localStorage.getItem("IDS");
+            this.processFavoritesOnStart(App.favIds);
+        }
 
         // When submit button pressed, add new topic and recreate buttons
         $(document).on("click", "#addTopic", function () {
@@ -51,6 +55,7 @@ var App = {
             var id = $(this).parent().attr("data-id");
             var index = App.favIds.indexOf(id);
             if (index !== -1) App.favIds.splice(index, 1);
+            localStorage.setItem("IDS", App.favIds.join(","));
             $(this).parent().remove();
         });
         // When clear is pressed, empty out the main content section but keep favorites
@@ -105,7 +110,7 @@ var App = {
                 newGif.attr("data-state", "still");
                 newGif.attr("data-still", response.data[i].images.fixed_height_still.url);
                 newGif.attr("data-animate", response.data[i].images.fixed_height.url);
-                newDiv.attr("data-id", response.data[i].id);
+                newDiv.attr("data-id", response.data[i].id); // adding ID so we can check for uniqueness in favorites column
                 newDiv.append(newGif);
                 var newFav = $('<br><button>');
                 newFav.addClass("favButton btn btn-dark");
@@ -144,6 +149,7 @@ var App = {
         }
         else {
             App.favIds.push(id);
+            localStorage.setItem("IDS", App.favIds.join(","));
         }
 
         var newObj = obj.clone();
@@ -162,6 +168,10 @@ var App = {
 
         // document.cookie = "cookie1=test; expires=Fri, 19 Jun 2020 20:47:11 UTC; path=/";
         // console.log(document.cookie);
+    },
+    processFavoritesOnStart: function (ids) {
+        queryURL = "https://api.giphy.com/v1/gifs/" + ids + "&api_key=LoR3cMaOF474wZ6NCThSPCVKtFNYbUNu";
+        console.log(queryURL);
     },
 }
 
