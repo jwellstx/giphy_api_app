@@ -7,6 +7,8 @@ body {
 
 .title{
     font-size: 400%;
+    font-weight: bold;
+    color: gold;
 }
 
 .btnCSS{
@@ -15,6 +17,11 @@ body {
 
 #newTopic {
     margin-top: 10%;
+}
+
+#addTopic,
+#clearFav {
+    margin-top: 3%;
 }
 
 img {
@@ -36,10 +43,14 @@ img {
     margin-bottom: 8%; /* Space between add to favorite button and row below */
 }
 
-.favorite {
+.favorite,
+.search {
     font-size: 200%; /* Sizing favorite title bigger */
+    color: gold;
+    font-weight: bold;
 }
 
 .favorite div {
     font-size: 50%; /* Lower back down b/c of inheritance setting it to 2x 8 */
+    color: white;
 }
